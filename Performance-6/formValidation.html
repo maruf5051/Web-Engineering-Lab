@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        form {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"] {
+            width: 100%;
+            padding: 10px 12px;
+            margin: 8px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        form input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .toggle-visibility {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            user-select: none;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #error {
+            color: red;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form onsubmit="return validateForm()">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your DIU email" required />
+
+        <label for="batch">Batch</label>
+        <input type="text" id="batch" placeholder="Enter batch (61_J)" required />
+
+        <label for="hobby">Hobby (comma separated, must include painting)</label>
+        <input type="text" id="hobby" placeholder="painting, coding, ..." required />
+
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+            <input type="password" id="password" placeholder="Enter password" required />
+            <span class="toggle-visibility" onclick="togglePassword('password', this)">👁️</span>
+        </div>
+
+        <label for="confirmPassword">Confirm Password</label>
+        <div class="password-wrapper">
+            <input type="password" id="confirmPassword" placeholder="Re-enter password" required />
+            <span class="toggle-visibility" onclick="togglePassword('confirmPassword', this)">👁️</span>
+        </div>
+
+        <br />
+        <button type="submit">Submit</button>
+
+        <p id="error"></p>
+    </form>
+
+    <script>
+        function togglePassword(fieldId, icon) {
+            const input = document.getElementById(fieldId);
+            if (input.type === "password") {
+                input.type = "text";
+                icon.textContent = "🙈";
+            } else {
+                input.type = "password";
+                icon.textContent = "👁️";
+            }
+        }
+
+        function validateForm() {
+            const email = document.getElementById("email").value.trim();
+            const batch = document.getElementById("batch").value.trim();
+            const hobby = document.getElementById("hobby").value.trim();
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+            const error = document.getElementById("error");
+            error.innerText = "";
+
+            const emailPattern = /^[a-zA-Z0-9.-]+@diu\.edu\.bd$/;
+            if (!emailPattern.test(email)) {
+                error.innerText = "Email must be a valid DIU email (e.g., example@diu.edu.bd)";
+                return false;
+            }
+
+
+            const batchPattern = /^\d{2}_[a-zA-Z]$/;
+            if (!batchPattern.test(batch)) {
+                error.innerText = "Batch must follow the format number_letter (e.g., 61_j)";
+                return false;
+            }
+
+            const hobbyLower = hobby.toLowerCase();
+            const paintingRegex = /\bpainting\b/;
+            if (hobby.split(",").length < 5 || !paintingRegex.test(hobbyLower)) {
+                error.innerText = "Enter at least 5 hobbies and make sure one of them is 'painting'.";
+                return false;
+            }
+
+            const passwordPattern = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[#&])/;
+            if (!passwordPattern.test(password)) {
+                error.innerText = "Password must contain uppercase, lowercase, and a special character (# or &).";
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                error.innerText = "Passwords do not match.";
+                return false;
+            }
+
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
