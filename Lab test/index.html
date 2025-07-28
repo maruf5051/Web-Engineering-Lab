@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome to My Personal Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#">About Me</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Welcome Section -->
+    <section id="welcome">
+        <p id="greet-message"></p>
+        <div class="flex-layout">
+            <div class="bio-card">
+                <h2>Hello, I'm Maruf Sikder</h2>
+                <p>
+                    I'm a passionate web developer who loves building interactive and
+                    user-friendly websites. Feel free to explore my work!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hobbies Section -->
+    <section id="hobbies">
+        <h2 class="section-title">Hobbies and Interests</h2>
+        <div class="flex-layout hobbies-container">
+            <div class="hobby-card">
+                <ul>
+                    <li>
+                        <button onclick="toggleDescription('hobby1')">Web Development</button>
+                        <p id="hobby1" class="hidden-desc">I love building websites and learning new technologies.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="hobby-card">
+                <ul>
+                    <li>
+                        <button onclick="toggleDescription('hobby2')">Photography</button>
+                        <p id="hobby2" class="hidden-desc">Capturing moments through the lens is a passion of mine.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="hobby-card">
+                <ul>
+                    <li>
+                        <button onclick="toggleDescription('hobby3')">Traveling</button>
+                        <p id="hobby3" class="hidden-desc">Exploring new places and cultures is always exciting.</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="links">
+        <h2>External Links</h2>
+        <p>
+            Visit my
+            <a href="https://github.com" target="_blank">GitHub</a>,
+            <a href="https://portfolio.com" target="_blank">Portfolio</a>, and
+            <a href="https://blog.com" target="_blank">Blog</a>.
+        </p>
+    </section>
+
+    <!-- Favorite Quote -->
+    <section id="quote">
+        <h2>Favorite Quote</h2>
+        <blockquote onclick="changeColor(this)">“Stay hungry, stay foolish.”</blockquote>
+        <button onclick="surprise()">Surprise Me</button>
+        <p id="motivation"></p>
+        <p id="date"></p>
+    </section>
+
+    <!-- Images -->
+    <section id="images">
+        <h2>Images</h2>
+        <img src="pexels-van-anh-nguyen-765457258-31452107.jpg" alt="Local" onmouseover="enlarge(this)"
+            onmouseout="shrink(this)" />
+        <img src="https://images.pexels.com/photos/12511526/pexels-photo-12511526.jpeg" alt="Internet"
+            onmouseover="enlarge(this)" onmouseout="shrink(this)" />
+    </section>
+
+    <!-- Skills Table -->
+    <section id="table">
+        <h2>Skills</h2>
+        <table id="skills">
+            <tr>
+                <th>Skill</th>
+            </tr>
+            <tr>
+                <td>HTML</td>
+            </tr>
+        </table>
+
+        <div id="skill-input-container" style="display: none; margin-top: 10px;">
+            <input type="text" id="new-skill" placeholder="Enter new skill" />
+            <button onclick="insertSkill()">Add</button>
+        </div>
+
+        <button onclick="showSkillInput()">Add Skill</button>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="form">
+        <h2>Contact Me</h2>
+        <form onsubmit="return validateForm()">
+            <input type="text" id="name" placeholder="Name" /><br />
+            <input type="email" id="email" placeholder="Email" /><br />
+            <textarea id="message" placeholder="Message"></textarea><br />
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
