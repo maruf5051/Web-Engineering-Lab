@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  margin: 20px;
+}
+
+.container {
+  border: 6px double #900;
+  padding: 15px;
+  background: #fff;
+}
+
+h1 {
+  color: #900;
+  font-size: 1.4em;
+  margin-bottom: 10px;
+}
+
+.warning {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.instructions {
+  margin: 10px 0 20px 20px;
+}
+
+.instructions li {
+  margin-bottom: 6px;
+}
+
+.instructions a {
+  color: #900;
+  text-decoration: none;
+}
+
+.instructions a:hover {
+  text-decoration: underline;
+}
+
+.form-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.form-table th {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+}
+
+.form-table td {
+  padding: 5px;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 95%;
+  padding: 4px;
+  border: 1px solid #999;
+}
+
+.slot-label {
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 5px;
+  border: 1px solid #999;
+}
+
+.buttons {
+  margin-top: 10px;
+}
+
+input[type="submit"],
+input[type="reset"] {
+  padding: 5px 15px;
+  margin-right: 5px;
+  border: 1px solid #666;
+  background: #eee;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover {
+  background: #ddd;
+}
+
+.results {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #fafafa;
+}
